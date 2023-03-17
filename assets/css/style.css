@@ -51,5 +51,13 @@ main {
 .container {
     width:1000px;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.cell {
+    width: calc(100% / 10);
+    aspect-ratio: 1 / 1;
+    border: 1px solid;
+    line-height: 100px;
 }
