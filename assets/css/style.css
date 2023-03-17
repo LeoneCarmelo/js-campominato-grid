@@ -61,3 +61,10 @@ main {
     border: 1px solid;
     line-height: 100px;
 }
+
+/* #endregion Main */
+
+/* Footer */
+footer {
+    padding: 1rem;
+}

@@ -9,61 +9,66 @@ const btnEl = document.getElementById('btn') // button
 const containerEl = document.querySelector('.container') // container
 const selectEl = document.querySelector('select') // select
 
-//Set difficulty levels
-const easy = 0
-const medium = 1 
-const hard = 2
 
-//grill easy level
-function easyGrill() {
-    let cellQuantity = 100 // Total numbers of cells for Easy level
-    let text = 1 // set the text for the first cell
-    for(let i = 0; i < cellQuantity; i++) { 
-        const singleCell = document.createElement('div') // create cell
-        singleCell.classList.add('cell') // add class .cell
-        singleCell.textContent = text // add text
-        singleCell.style.textAlign = 'center' // set textAlign property
-        text += 1 // increase the text to set the new name of the new variable
-        containerEl.append(singleCell) // 
-    }
+//grid level
+function grid(cellQuantity, width_cell, width_container) {
+        let text = 1 // set the text for the first cell
+        for(let i = 0; i < cellQuantity; i++) { 
+            const singleCell = document.createElement('div') // create cell
+            singleCell.classList.add('cell') // add class .cell
+            singleCell.textContent = text // add text
+            singleCell.style.width = width_cell // setting the right width
+            singleCell.style.textAlign = 'center' // set textAlign property
+            text += 1 // increase the text to set the new name of the new variable
+            containerEl.style.width = width_container // set the right width for the container
+            containerEl.append(singleCell) // 
+        } 
 }
 
-//grill medium level
-function mediumGrill() {
-    let cellQuantity = 81 // Total numbers of cells for Easy level
-    let text = 1 // set the text for the first cell
-    for(let i = 0; i < cellQuantity; i++) { 
-        const singleCell = document.createElement('div') // create cell
-        singleCell.classList.add('cell') // add class .cell
-        singleCell.textContent = text // add text
-        singleCell.style.textAlign = 'center' // set textAlign property
-        text += 1 // increase the text to set the new name of the new variable
-        containerEl.append(singleCell) // 
-    }
-}
-
-//grill hard level
-function hardGrill() {
-    let cellQuantity = 49 // Total numbers of cells for Easy level
-    let text = 1 // set the text for the first cell
-    for(let i = 0; i < cellQuantity; i++) { 
-        const singleCell = document.createElement('div') // create cell
-        singleCell.classList.add('cell') // add class .cell
-        singleCell.textContent = text // add text
-        singleCell.style.textAlign = 'center' // set textAlign property
-        text += 1 // increase the text to set the new name of the new variable
-        containerEl.append(singleCell) // 
-    }
-}
-
-
-
+//generate grid
 btnEl.addEventListener('click', function() {
-    if(selectEl[0].value == easy) {
-        easyGrill()
-    } else if (selectEl[1].value == medium) {
-        mediumGrill()
-    } else if (selectEl[2].value == hard) {
-        hardGrill()
-    }
+    let cellNumbers = levels();
+    let cellWidth = widthCell()
+    let containerWidth = widthContainer()
+    grid(cellNumbers, cellWidth, containerWidth)
 })
+
+//Set difficulty levels
+function levels(){
+    let numberOfCells = 0
+    if (selectEl.value == selectEl[0].value) {
+        numberOfCells = selectEl[0].value
+    } else if (selectEl.value == selectEl[1].value) {
+        numberOfCells = selectEl[1].value
+    } else if (selectEl.value == selectEl[2].value) {
+        numberOfCells = selectEl[2].value
+    }
+return numberOfCells
+}
+
+//Set width cell
+function widthCell() {
+    let width = 0
+    if (selectEl.value == selectEl[0].value) {
+        width = 'calc(100% / 10)'
+    } else if (selectEl.value == selectEl[1].value) {
+        width = 'calc(100% / 9)'
+    } else if (selectEl.value == selectEl[2].value) {
+        width = 'calc(100% / 7)'
+    }
+    return width
+}
+
+//Set container width
+function widthContainer() {
+    let width = 0
+    if (selectEl.value == selectEl[0].value) {
+        width = '1000px'
+    } else if (selectEl.value == selectEl[1].value) {
+        width = '900px'
+    } else if (selectEl.value == selectEl[2].value) {
+        width = '700px'
+    }
+    return width
+}
+
