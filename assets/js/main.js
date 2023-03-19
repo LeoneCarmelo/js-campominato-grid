@@ -26,6 +26,7 @@ function grid(cellQuantity, width_cell, width_container) {
                 console.log(singleCell.textContent)
                 singleCell.textContent = ''
                 singleCell.style.backgroundColor = 'deepskyblue'
+                singleCell.style.transition = 'background-color 0.75s'
             })
         } 
 }
