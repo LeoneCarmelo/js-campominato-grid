@@ -21,16 +21,23 @@ function grid(cellQuantity, width_cell, width_container) {
             singleCell.style.textAlign = 'center' // set textAlign property
             text += 1 // increase the text to set the new name of the new variable
             containerEl.style.width = width_container // set the right width for the container
-            containerEl.append(singleCell) // 
+            containerEl.append(singleCell) //
+            singleCell.addEventListener('click', function(){ // set blue color on cell when clicked
+                console.log(singleCell.textContent)
+                singleCell.textContent = ''
+                singleCell.style.backgroundColor = 'deepskyblue'
+            })
         } 
 }
 
 //generate grid
 btnEl.addEventListener('click', function() {
+    containerEl.innerHTML = '' // empty container
     let cellNumbers = levels();
     let cellWidth = widthCell()
     let containerWidth = widthContainer()
     grid(cellNumbers, cellWidth, containerWidth)
+
 })
 
 //Set difficulty levels
